@@ -63,6 +63,7 @@
     "react-dom": "^16.13.1",
     "react-hook-form": "^5.7.2",
     "react-router-dom": "^5.1.2",
+    "tailwindcss-toggle": "TowelSoftware/tailwindcss-toggle",
     "webfontloader": "^1.6.28"
   }
 }

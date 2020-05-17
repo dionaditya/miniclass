@@ -66,9 +66,39 @@ const Dashboard: React.FC = () => {
       <div
         className={cx(
           "min-h-screen w-full max-h-screen h-full p-24",
-          theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+          theme === "light" ? "bg-white" : "bg-gray-800 text-white",
+          "relative"
         )}
       >
+        <div
+          className="mt-4 flex flex-row absolute"
+          style={{
+            top: 0,
+            right: 40,
+          }}
+        >
+          {theme !== "dark" ? (
+            <span
+              id="toogle"
+              className="border rounded-full border-grey flex items-center cursor-pointer w-12 justify-start"
+              onClick={(e) => setTheme("dark")}
+            >
+              <span className="rounded-full border w-6 h-6 border-grey shadow-inner bg-white shadow"></span>
+            </span>
+          ) : (
+            <span
+              id="toogle"
+              className="border rounded-full border-grey flex items-center cursor-pointer w-12 bg-green-500 justify-end"
+              onClick={(e) => setTheme("light")}
+            >
+              <span className="rounded-full border w-6 h-6 border-grey shadow-inner bg-white shadow"></span>
+            </span>
+          )}
+
+          <label htmlFor="toogle" className="ml-4">
+            Dark Theme{" "}
+          </label>
+        </div>
         <h1
           className={cx(
             "text-4xl font-bold",
@@ -89,14 +119,7 @@ const Dashboard: React.FC = () => {
               />
             );
           })}
-          <div
-            className="mt-4"
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
+          <div className="mt-4 flex flex-row items-center">
             <input
               className="mr-2 leading-tight"
               name="agreement"
@@ -112,24 +135,10 @@ const Dashboard: React.FC = () => {
             ]}
           />
         </form>
-        <div className="mt-4">
-          <button disabled={theme === "dark"} className={cx("btn bg-blue-800 text-white p-2 mr-2")} onClick={(e) => setTheme("dark")}>
-            Dark Theme
-          </button>
-          <button disabled={theme === "light"} className={cx("btn p-2 bg-white text-black border border-black" )} onClick={(e) => setTheme("light")}>
-            Light theme
-          </button>
-        </div>
       </div>
-      <div
-        className="bg-blue-600 w-full min-h-screen max-h-screen h-full"
-        style={{
-          overflow: "hidden",
-          position: "relative",
-        }}
-      >
+      <div className="bg-blue-600 w-full relative overflow-hidden min-h-screen max-h-screen h-full">
         <div
-          className="flex flex-col absolute z-10"
+          className={cx("flex flex-col absolute z-10")}
           style={{
             bottom: 320,
             left: 50,
@@ -141,44 +150,43 @@ const Dashboard: React.FC = () => {
           <p className="text-white">{`We're sure to provide our service is the best for you`}</p>
         </div>
         <People1
+          className={cx("absolute z-20 w-full")}
           style={{
             top: -100,
             left: 40,
-            position: "absolute",
-            zIndex: 20,
-            width: 100,
+            width: 80,
           }}
         />
-
         <People2
+          className={cx("absolute z-20 w-full")}
           style={{
             bottom: -100,
             right: 40,
-            position: "absolute",
-            zIndex: 20,
-            width: 100,
+            width: 80,
           }}
         />
 
         <Element1
+          className={cx("absolute z-10 w-full")}
           style={{
-            bottom: 60,
+            bottom: 100,
             left: -10,
-            position: "absolute",
           }}
         />
+
         <Elements2
+          className={cx("absolute z-10")}
           style={{
             bottom: 0,
             right: 0,
-            position: "absolute",
           }}
         />
+
         <Placeholder
+          className={cx("absolute z-10")}
           style={{
             bottom: 60,
             left: 50,
-            position: "absolute",
           }}
         />
       </div>
