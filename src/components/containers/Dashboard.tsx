@@ -2,8 +2,11 @@ import React from "react";
 import { styled } from "linaria/react";
 import Button from "../Button/Button";
 import { css, styles } from "css-zero/macro";
-import cx from "@macklinu/cx";
-import Elements from '../ElemetnsComponent/Elements';
+import Element1 from "../ElemetnsComponent/Element1";
+import Elements2 from "../ElemetnsComponent/Elements2";
+import Placeholder from "../ElemetnsComponent/Placeholder";
+import People1 from "../ElemetnsComponent/People1";
+import People2 from "../ElemetnsComponent/People2";
 
 const bgRed = css`
   font-size: 1.2rem;
@@ -44,7 +47,7 @@ const inputField = [
 ];
 
 const agreementsText = `
-  I agree to the processing of my personal data and hvae read the user agreement
+  I agree to the processing of my personal data and have read the user agreement
 `;
 
 const Dashboard: React.FC = () => {
@@ -68,8 +71,8 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-row h-screen">
-      <div className="max-h-screen w-full p-24">
+    <div className="grid grid-cols-2 h-full min-h-screen max-h-screen ">
+      <div className="min-h-screen w-full max-h-screen h-full p-24">
         <h1 className="text-4xl font-bold text-gray-800" id="Title">
           Creating an account
         </h1>
@@ -87,34 +90,91 @@ const Dashboard: React.FC = () => {
               </div>
             );
           })}
-          <div className="flex align-middle mt-4">
+          <div
+            className="mt-4"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
             <input
+              className="mr-2 leading-tight"
+              name="agreement"
               type="checkbox"
-              name="agreements"
-              id="agreements"
-              className="bg-blue-200"
             />
             <p className="text-base">{agreementsText}</p>
           </div>
           <Button
-          text="Create Account"
-          type="submit"
-          extendClass={[
-            "mt-4 bg-yellow-400 text-yellow-700 w-full py-4 px-2",
-            styles(bgRed),
-          ]}
-        />
+            text="Create Account"
+            type="submit"
+            extendClass={[
+              "mt-4 bg-yellow-400 text-yellow-700 w-full py-4 px-2",
+              styles(bgRed),
+            ]}
+          />
         </form>
-      
-        <div className="mt-4 grid ">
-          <span>Name: {value.name}</span>
-          <span>LastName: {value.lastname}</span>
-          <span>Email: {value.email}</span>
-          <span>Password: {value.password}</span>
-        </div>
       </div>
-      <div className="bg-blue-600 w-full h-screen">
-        <Elements />
+      <div
+        className="bg-blue-600 w-full min-h-screen max-h-screen h-full"
+        style={{
+          overflow: "hidden",
+          position: "relative",
+        }}
+      >
+        <div
+          className="flex flex-col absolute"
+          style={{
+            bottom: 320,
+            left: 50,
+          }}
+        >
+          <h1 className="font-bold text-white text-2xl">
+            {`Hi, you are one step away to get unlimited access for our service`}
+          </h1>
+          <p className="text-white">{`We're sure to provide our service is the best for you`}</p>
+        </div>
+        <People1
+          style={{
+            top: -100,
+            left: 40,
+            position: "absolute",
+            zIndex: 20,
+            width: 100,
+          }}
+        />
+
+        <People2
+          style={{
+            bottom: -100,
+            right: 40,
+            position: "absolute",
+            zIndex: 20,
+            width: 100,
+          }}
+        />
+
+        <Element1
+          style={{
+            bottom: 60,
+            left: -10,
+            position: "absolute",
+          }}
+        />
+        <Elements2
+          style={{
+            bottom: 0,
+            right: 0,
+            position: "absolute",
+          }}
+        />
+        <Placeholder
+          style={{
+            bottom: 60,
+            left: 50,
+            position: "absolute",
+          }}
+        />
       </div>
     </div>
   );
