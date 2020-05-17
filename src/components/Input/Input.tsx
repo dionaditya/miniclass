@@ -9,7 +9,7 @@ const StlyedInput = styled.input`
 `;
 
 export const Input = (props) => {
-  const { type, name, placeholder, label } = props;
+  const { type, name, placeholder, label, ...rest } = props;
   return (
     <div key={`input-${name}`} className="flex flex-col mt-4">
       <label htmlFor={name}>{label}</label>
@@ -18,6 +18,7 @@ export const Input = (props) => {
         name={name}
         id={name}
         placeholder={placeholder}
+        {...rest}
       />
     </div>
   );
