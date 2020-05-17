@@ -107,7 +107,7 @@ const Dashboard: React.FC = () => {
         }}
       >
         <div
-          className="flex flex-col absolute"
+          className="flex flex-col absolute z-10"
           style={{
             bottom: 320,
             left: 50,
