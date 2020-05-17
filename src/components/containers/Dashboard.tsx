@@ -7,6 +7,9 @@ import People1 from "../ElemetnsComponent/People1";
 import People2 from "../ElemetnsComponent/People2";
 import { Input } from "../Input/Input";
 import cx from "@macklinu/cx";
+import NightICON from "../../assets/logo/night.svg";
+import DayICON from "../../assets/logo/day.svg";
+import { useMorph } from "react-morph";
 
 const inputField = [
   {
@@ -48,6 +51,7 @@ const Dashboard: React.FC = () => {
   });
 
   const [theme, setTheme] = React.useState("light");
+  const morph = useMorph();
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,34 +75,49 @@ const Dashboard: React.FC = () => {
         )}
       >
         <div
-          className="mt-4 flex flex-row absolute"
+          className="mt-4 flex flex-row absolute flex-1 items-center"
           style={{
             top: 0,
             right: 40,
+            width: "100px",
           }}
         >
           {theme !== "dark" ? (
             <span
               id="toogle"
-              className="border rounded-full border-grey flex items-center cursor-pointer w-12 justify-start"
+              className="border mr-2 w-full rounded-full border-grey flex items-center cursor-pointer w-12 justify-start"
               onClick={(e) => setTheme("dark")}
+              style={{height: 30}}
             >
               <span className="rounded-full border w-6 h-6 border-grey shadow-inner bg-white shadow"></span>
             </span>
           ) : (
             <span
               id="toogle"
-              className="border rounded-full border-grey flex items-center cursor-pointer w-12 bg-green-500 justify-end"
+              className="border mr-2 rounded-full w-full border-grey flex items-center cursor-pointer w-12 bg-green-500 justify-end"
               onClick={(e) => setTheme("light")}
+              style={{height: 30}}
             >
               <span className="rounded-full border w-6 h-6 border-grey shadow-inner bg-white shadow"></span>
             </span>
           )}
-
-          <label htmlFor="toogle" className="ml-4">
-            Dark Theme{" "}
-          </label>
+          {theme === "dark" ? (
+            <NightICON
+              style={{
+                width: 48,
+                height: 48,
+              }}
+            />
+          ) : (
+            <DayICON
+              style={{
+                width: 48,
+                height: 48,
+              }}
+            />
+          )}
         </div>
+
         <h1
           className={cx(
             "text-4xl font-bold",

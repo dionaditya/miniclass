@@ -4,6 +4,8 @@ declare module "*.png" {
 }
 
 declare module "tailwind.macro"
+declare module "react-svg-morph"
+declare module "react-morph"
 
 declare namespace webfontloader {}
 
