@@ -6,6 +6,7 @@ import Placeholder from "../ElemetnsComponent/Placeholder";
 import People1 from "../ElemetnsComponent/People1";
 import People2 from "../ElemetnsComponent/People2";
 import { Input } from "../Input/Input";
+import cx from "@macklinu/cx";
 
 const inputField = [
   {
@@ -45,6 +46,8 @@ const Dashboard: React.FC = () => {
     email: "",
     password: "",
   });
+
+  const [theme, setTheme] = React.useState("light");
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,9 +62,20 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 h-full min-h-screen max-h-screen ">
-      <div className="min-h-screen w-full max-h-screen h-full p-24">
-        <h1 className="text-4xl font-bold text-gray-800" id="Title">
+    <div className="grid grid-cols-2 h-full min-h-screen max-h-screen">
+      <div
+        className={cx(
+          "min-h-screen w-full max-h-screen h-full p-24",
+          theme === "light" ? "bg-white" : "bg-gray-800 text-white"
+        )}
+      >
+        <h1
+          className={cx(
+            "text-4xl font-bold",
+            theme === "light" ? "text-gray-800" : "text-white"
+          )}
+          id="Title"
+        >
           Creating an account
         </h1>
         <form onSubmit={handleSubmit}>
@@ -98,6 +112,14 @@ const Dashboard: React.FC = () => {
             ]}
           />
         </form>
+        <div className="mt-4">
+          <button disabled={theme === "dark"} className={cx("btn bg-blue-800 text-white p-2 mr-2")} onClick={(e) => setTheme("dark")}>
+            Dark Theme
+          </button>
+          <button disabled={theme === "light"} className={cx("btn p-2 bg-white text-black border border-black" )} onClick={(e) => setTheme("light")}>
+            Light theme
+          </button>
+        </div>
       </div>
       <div
         className="bg-blue-600 w-full min-h-screen max-h-screen h-full"
