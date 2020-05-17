@@ -1,23 +1,11 @@
 import React from "react";
-import { styled } from "linaria/react";
 import Button from "../Button/Button";
-import { css, styles } from "css-zero/macro";
 import Element1 from "../ElemetnsComponent/Element1";
 import Elements2 from "../ElemetnsComponent/Elements2";
 import Placeholder from "../ElemetnsComponent/Placeholder";
 import People1 from "../ElemetnsComponent/People1";
 import People2 from "../ElemetnsComponent/People2";
-
-const bgRed = css`
-  font-size: 1.2rem;
-`;
-
-const InputStyle = styled.input`
-  background: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-`;
+import { Input } from "../Input/Input";
 
 const inputField = [
   {
@@ -79,15 +67,12 @@ const Dashboard: React.FC = () => {
         <form onSubmit={handleSubmit}>
           {inputField.map((data) => {
             return (
-              <div key={`input-${data.name}`} className="flex flex-col mt-4">
-                <label htmlFor={data.name}>{data.label}</label>
-                <InputStyle
-                  type={data.type}
-                  name={data.name}
-                  id={data.name}
-                  placeholder={data.placeholder}
-                />
-              </div>
+              <Input
+                type={data.type}
+                name={data.name}
+                placeholder={data.placeholder}
+                label={data.label}
+              />
             );
           })}
           <div
@@ -110,7 +95,6 @@ const Dashboard: React.FC = () => {
             type="submit"
             extendClass={[
               "mt-4 bg-yellow-400 text-yellow-700 w-full py-4 px-2",
-              styles(bgRed),
             ]}
           />
         </form>

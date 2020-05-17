@@ -7,7 +7,6 @@ const Button = (props) => {
     onClick,
     disabled,
     loading,
-    color,
     extendClass,
     ...rest
   } = props
@@ -16,7 +15,6 @@ const Button = (props) => {
     <button
       className={cx(
         "btn",
-        color,
         ...extendClass,
       )}
       onClick={onClick}
